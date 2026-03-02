@@ -50,7 +50,7 @@ public class PlayerController : CharacterMaster
         _lookInput = _lookAction.ReadValue<Vector2>();
 
         _currentXRotation -= _lookInput.y * Sensitivity.y;
-        _currentXRotation = Mathf.Clamp(_currentXRotation, -90f, 90);
+        _currentXRotation = Mathf.Clamp(_currentXRotation, -90f, 90f);
 
         _cameraTransform.localRotation = Quaternion.Euler(_currentXRotation, 0f, 0f);   //this smells a bit...
 
@@ -61,13 +61,13 @@ public class PlayerController : CharacterMaster
         planarForward.Normalize();
 
         _move = (planarForward * _movementInput.y) + (_cameraTransform.right * _movementInput.x);
-        _move *= CharacterBody.Stats.StatsDef.MovementSpeed;
+        _move *= CharacterBody.Stats.Stats.MovementSpeed;
         _move.y = _characterController.velocity.y;
         _move.y += Globals.GRAVITY * Time.deltaTime;
 
         if (_characterController.isGrounded && _jumpAction.WasPressedThisFrame())
         {
-            _move += CharacterBody.Stats.StatsDef.JumpingVelocity;
+            _move += CharacterBody.Stats.Stats.JumpingVelocity;
         }
 
         _characterController.Move(_move * Time.deltaTime);

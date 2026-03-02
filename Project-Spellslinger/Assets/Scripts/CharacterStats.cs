@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [System.Serializable]
-public struct StatsDef
+public struct CharacterStatsDefinition
 {
     public float MovementSpeed;
     public float MovementAccel;
@@ -10,8 +10,8 @@ public struct StatsDef
     public Vector3 JumpingVelocity;
 }
 
-public class Stats : MonoBehaviour
+[System.Serializable]
+public class CharacterStats
 {
-    public StatsDef StatsDef;
-
+    public CharacterStatsDefinition Stats;
 }
