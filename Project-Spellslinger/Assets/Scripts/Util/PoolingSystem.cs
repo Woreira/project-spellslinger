@@ -2,6 +2,8 @@ using System;
 using UnityEngine;
 using System.Collections.Generic;
 
+//todo: prewarming
+
 public static class PoolingSystem<T> where T : MonoBehaviour
 {
     private static Dictionary<int, FastList<T>> _poolByPrefab = new Dictionary<int, FastList<T>>();
@@ -65,7 +67,7 @@ public static class PoolingSystem<T> where T : MonoBehaviour
             TryGetPooledPrefab(prefab, out instance);
         }
 
-        _instanceByPrefab.Add(instance.GetInstanceID(), prefab.GetInstanceID());
+        _instanceByPrefab[instance.GetInstanceID()] = prefab.GetInstanceID();
         instance.gameObject.SetActive(true);
         return instance;
     }
@@ -73,9 +75,9 @@ public static class PoolingSystem<T> where T : MonoBehaviour
     public static T Get(T prefab, Transform parent, Vector3 position, Quaternion rotation)
     {
         var instance = Get(prefab);
-        instance.transform.parent = parent;
-        instance.gameObject.transform.position = position;
-        instance.gameObject.transform.rotation = rotation;
+        instance.transform.SetParent(parent, false);
+        instance.transform.position = position;
+        instance.transform.rotation = rotation;
         return instance;
     }
 

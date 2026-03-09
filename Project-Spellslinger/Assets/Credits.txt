@@ -1,1 +1,3 @@
-Blaster Kit by Kenney.nl
+Blaster Kit by Kenney 'kenney.nl' Vleugels
+PlayerPrefs Editor & Utilities by sabresaurus / Barnaby 'mvi' Smith
+NaughtyAttributes by Denis 'dbrizov' Rizov
