@@ -11,6 +11,7 @@ public class PlayerController : CharacterMaster
     private InputAction _fireAction;
 
     private CharacterController _characterController;
+    private PlayerModelViewer _playerModelViewer;
     private Transform _cameraTransform;
     private Vector2 _movementInput;
     private Vector2 _lookInput;
@@ -33,6 +34,7 @@ public class PlayerController : CharacterMaster
         _jumpAction.Enable();
         _fireAction.Enable();
 
+        _playerModelViewer = GetComponentInChildren<PlayerModelViewer>();
         _characterController = CharacterBody.CharacterController;
         _cameraTransform = Camera.main.transform;
 

@@ -3,18 +3,17 @@ using UnityEngine;
 public class CharacterBody : MonoBehaviour
 {
     public CharacterMaster Master;
+    public CharacterController CharacterController;
 
     public CharacterStats Stats;
     public Placeholders Placeholders;
 
-    public CharacterController CharacterController;
-
+    [NaughtyAttributes.ReadOnly]
     public bool IsSetup = false;
 
     private void Setup()
     {
         Master = GetComponent<CharacterMaster>();
-
         CharacterController = GetComponent<CharacterController>();
 
         Master.Setup(this);

@@ -516,6 +516,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &467297791 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 5fe5a818fd31e3c4a9b0e493ab90d229, type: 3}
+  m_PrefabInstance: {fileID: 1164596306}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &921586223
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -623,19 +628,19 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1242235405}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 5fe5a818fd31e3c4a9b0e493ab90d229, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -15.346283
+      value: 0.4446411
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5fe5a818fd31e3c4a9b0e493ab90d229, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.26310158
+      value: 0.23168361
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5fe5a818fd31e3c4a9b0e493ab90d229, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -17.59
+      value: 0.6560383
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5fe5a818fd31e3c4a9b0e493ab90d229, type: 3}
       propertyPath: m_LocalRotation.w
@@ -643,7 +648,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5fe5a818fd31e3c4a9b0e493ab90d229, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5fe5a818fd31e3c4a9b0e493ab90d229, type: 3}
       propertyPath: m_LocalRotation.y
@@ -951,6 +956,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 47048473}
+  - {fileID: 467297791}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1242235406
@@ -966,16 +972,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Master: {fileID: 0}
+  CharacterController: {fileID: 0}
   Stats:
     Stats:
-      MovementSpeed: 0
+      MovementSpeed: 5
       MovementAccel: 0
       MovementDecel: 0
       AirMovementFactor: 0
       JumpingVelocity: {x: 0, y: 5, z: 0}
   Placeholders:
     HeadPlaceholder: {fileID: 47048473}
-  CharacterController: {fileID: 0}
   IsSetup: 0
 --- !u!114 &1242235407
 MonoBehaviour:
@@ -1660,6 +1666,5 @@ SceneRoots:
   - {fileID: 2013410475}
   - {fileID: 1604097668}
   - {fileID: 1242235405}
-  - {fileID: 1164596306}
   - {fileID: 921586223}
   - {fileID: 993168217}

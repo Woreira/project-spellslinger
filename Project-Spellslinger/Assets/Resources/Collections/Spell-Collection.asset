@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb2b817638fdc0e40af169777ebb0525, type: 3}
   m_Name: Spell-Collection
   m_EditorClassIdentifier: 
-  Path: 
+  Path: Spells/
   Collection: []
