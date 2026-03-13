@@ -2,13 +2,16 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
+//todo add system language to id map
+
 public static class LocalizationSystem
 {
-    private static Dictionary<string, string> _localizedStringsByKey;
     public static List<LocalizedBehaviour> RegisteredBehaviours = new List<LocalizedBehaviour>();
+    private static Dictionary<string, string> _localizedStringsByKey;
 
-    public static void Setup(string csv, string columnId)
+    public static void Setup(string columnId)
     {
+        var csv = Resources.Load<TextAsset>(Globals.LocalizationConfig.LocalizationFilePath).text;
         _localizedStringsByKey = new Dictionary<string, string>();
         if (string.IsNullOrEmpty(csv) || string.IsNullOrEmpty(columnId)) return;
 
@@ -49,11 +52,6 @@ public static class LocalizationSystem
         {
             RegisteredBehaviours[i].UpdateLabel();
         }
-    }
-
-    public static void Setup(TextAsset asset, string columnId)
-    {
-        Setup(asset.text, columnId);
     }
 
     public static string GetLocalizedString(string key)
