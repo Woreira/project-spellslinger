@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-public class ScriptableCollection<T> : ScriptableObject where T : CollectableSO
+public class ScriptableCollectionSO<T> : ScriptableObject where T : EntrySO
 {
     public string Path;
     public T[] Collection;

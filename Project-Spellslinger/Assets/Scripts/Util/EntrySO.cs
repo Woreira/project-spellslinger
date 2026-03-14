@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class CollectableSO : ScriptableObject
+public class EntrySO : ScriptableObject
 {
     public string Id;
 }

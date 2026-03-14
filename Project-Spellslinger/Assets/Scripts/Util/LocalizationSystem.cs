@@ -56,9 +56,14 @@ public static class LocalizationSystem
 
     public static string GetLocalizedString(string key)
     {
-        var value = key;
-        _localizedStringsByKey.TryGetValue(key, out value);
-        return value;
+        if (_localizedStringsByKey.TryGetValue(key, out var value))
+        {
+            return value;
+        }
+        else
+        {
+            return key;
+        }
     }
 
     public static void Register(LocalizedBehaviour behaviour)

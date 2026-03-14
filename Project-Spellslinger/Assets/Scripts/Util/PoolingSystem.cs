@@ -1,18 +1,19 @@
 using System;
 using UnityEngine;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 
 //todo: prewarming
 
 public static class PoolingSystem<T> where T : MonoBehaviour
 {
-    private static Dictionary<int, FastList<T>> _poolByPrefab = new Dictionary<int, FastList<T>>();
+    private static Dictionary<int, SwapbackList<T>> _poolByPrefab = new Dictionary<int, SwapbackList<T>>();
     private static Dictionary<int, int> _instanceByPrefab = new Dictionary<int, int>();
 
     public static void InitPool(T prefab, int capacity = 50)
     {
         var id = prefab.GetInstanceID();
-        var list = new FastList<T>(capacity);
+        var list = new SwapbackList<T>(capacity);
 
         for (var i = 0; i < capacity; i++)
         {
@@ -24,7 +25,7 @@ public static class PoolingSystem<T> where T : MonoBehaviour
         _poolByPrefab.Add(id, list);
     }
 
-    public static void ExtendPool(FastList<T> pool, T prefab)
+    public static void ExtendPool(SwapbackList<T> pool, T prefab)
     {
         var id = prefab.GetInstanceID();
         var oldCapacity = pool.Capacity;
@@ -58,6 +59,7 @@ public static class PoolingSystem<T> where T : MonoBehaviour
         return false;
     }
 
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static T Get(T prefab)
     {
         T instance;
@@ -72,6 +74,7 @@ public static class PoolingSystem<T> where T : MonoBehaviour
         return instance;
     }
 
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static T Get(T prefab, Transform parent, Vector3 position, Quaternion rotation)
     {
         var instance = Get(prefab);
@@ -101,9 +104,9 @@ public static class PoolingSystem<T> where T : MonoBehaviour
         instance.gameObject.SetActive(false);
     }
 
-    public static void DrainAll()
+    public static void Cleanup()
     {
-        _poolByPrefab = new Dictionary<int, FastList<T>>();
+        _poolByPrefab = new Dictionary<int, SwapbackList<T>>();
         _instanceByPrefab = new Dictionary<int, int>();
         GC.Collect();
     }

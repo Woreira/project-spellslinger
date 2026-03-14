@@ -1,13 +1,13 @@
 using System;
 using UnityEngine;
 
-public class FastList<T>
+public class SwapbackList<T>
 {
     public T[] Elements;
     public int Count;
     public int Capacity;
 
-    public FastList(int capacity)
+    public SwapbackList(int capacity)
     {
         Elements = new T[capacity];
         Capacity = capacity;

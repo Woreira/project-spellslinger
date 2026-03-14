@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class SpellSO : CollectableSO
+public class SpellSO : EntrySO
 {
     
 }
